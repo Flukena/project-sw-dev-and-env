@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import App from './App.vue'
 import Router from 'vue-router'
 import Task from '../views/Task.vue'
 import New from '../views/New.vue'
@@ -14,7 +15,8 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/tasks'
+            redirect: '/tasks',
+            component: App
         },
         {
             path: '/tasks',

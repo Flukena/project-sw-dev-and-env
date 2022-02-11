@@ -1,5 +1,7 @@
 <template>
+
   <div id="app">
+        
     <div class="ui inverted segment navbar">
       <div class="ui center aligned container">
         <div class="ui large secondary inverted pointing menu compact">
@@ -19,10 +21,14 @@
         </div>
       </div>
     </div>
+
+    
   </div>
 </template>
 
 <script>
+
+
 export default {
   name: 'App',
   component: {
