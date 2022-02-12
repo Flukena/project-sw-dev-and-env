@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Show task</h1>
+    <h1>Show Record task</h1>
     <flash-message></flash-message>
     <div class="ui labeled input fluid">
       <div class="ui label">
