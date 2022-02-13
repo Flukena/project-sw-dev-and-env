@@ -3,10 +3,10 @@
     <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
     <div class="ui labeled input fluid">
       <div class="ui label" style="width:">
-        <i class="calendar icon"></i>Date & Time
+        <i class="calendar icon"></i>Date 
       </div>
-      <date-picker v-model="task.date" lang="en" type="date" format="YYYY-MM-dd"></date-picker>
-      <date-picker v-model="task.time" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker>
+      <date-picker v-model="task.task1" lang="en" type="date" format="YYYY-MM-dd"></date-picker>
+      <!-- <date-picker v-model="task.time" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker> -->
       <!-- <input type="text" placeholder="Enter Date..." v-model="task.task1" /> -->
     </div>
 
