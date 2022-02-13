@@ -11,7 +11,7 @@ import { api } from '../helpers/Helpers';
 export default {
   name: 'edit',
   components: {
-    'task-form': taskForm
+    'task-form': taskForm,
   },
   data: function() {
     return {

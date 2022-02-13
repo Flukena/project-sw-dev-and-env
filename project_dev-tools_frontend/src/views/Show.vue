@@ -4,7 +4,7 @@
     <flash-message></flash-message>
     <div class="ui labeled input fluid">
       <div class="ui label">
-      <i class="calendar icon"></i>  Date
+      <i class="calendar icon"></i>  Date & TIME
       </div>
       <input type="text" readonly  :value="task.task1"/>
     </div>

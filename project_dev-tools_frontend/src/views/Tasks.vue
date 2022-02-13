@@ -6,7 +6,7 @@
     <table id="tasks" class="ui celled compact table">
       <thead>
         <tr>
-            <th><i class="calendar icon"></i>Date</th>
+            <th><i class="calendar icon"></i>Date & Time</th>
             <th><i class="bitcoin icon"></i>Symbol</th>
             <th><i class="arrow alternate circle left icon"></i>Entry</th>
             <th><i class="dollar sign icon"></i>Profit/Loss</th>
