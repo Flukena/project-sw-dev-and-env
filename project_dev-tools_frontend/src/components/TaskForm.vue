@@ -2,10 +2,12 @@
  <form action="#" @submit.prevent="onSubmit">
     <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
     <div class="ui labeled input fluid">
-      <div class="ui label">
-        <i class="calendar icon"></i>Date
+      <div class="ui label" style="width:">
+        <i class="calendar icon"></i>Date 
       </div>
-      <input type="text" placeholder="Enter Date..." v-model="task.task1" />
+      <date-picker v-model="task.task1" lang="en" type="date" format="YYYY-MM-dd"></date-picker>
+      <!-- <date-picker v-model="task.time" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker> -->
+      <!-- <input type="text" placeholder="Enter Date..." v-model="task.task1" /> -->
     </div>
 
     <div class="ui labeled input fluid">
@@ -40,14 +42,21 @@
   </form>
 </template>
 <script>
+import 'vue2-datepicker/index.css'; 
+import DatePicker from 'vue2-datepicker'
 export default {
   name: 'task-form',
+  components:{
+    DatePicker
+  },
   props: {
     task: {
       type: Object,
       required: false,
       default: () => {
         return {
+          date:"",
+          time:"",
           task1: '',
           task2: '',
           task3: '',
