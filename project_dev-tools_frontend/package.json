@@ -1,10 +1,11 @@
 {
-  "name": "vuecrudapp",
+  "name": "traderrecord",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy:windows": "npm run build && copy ./Dockerfile dist && docker build -t flukgoza/sortwaredev:latest ./dist/ && docker push flukgoza/sortwaredev",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

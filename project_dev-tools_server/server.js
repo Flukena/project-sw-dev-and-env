@@ -9,7 +9,7 @@ const routes = require('./api/routes/taskRoutes');
 // mongoose.Promise = global.Promise;
 // mongoose.set('useFindAndModify', false);
 mongoose.connect(
-  'mongodb://localhost/vuecrudapp',
+  'mongodb://localhost/traderreccord',
   { useNewUrlParser: true }
 );
 const port = process.env.PORT || 3000;

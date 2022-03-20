@@ -1,19 +1,18 @@
 version: '3.8'
 
 services:
-  backend: 
+  # backend: 
+  #   build:
+  #     context: ./project_dev-tools_server
+  #     target: back
+  #     dockerfile: ./Dockerfile
+
+  #   command: npm run serve
+
+  frontend:
     build:
-      context: ./project_dev-tools_server
-      target: dev
+      context: ../project_dev-tools_frontend/dist
+      target: front
       dockerfile: ./Dockerfile
-    command: npm run serve
-    port:
-      - 8080:80
-    frontend:
-      build:
-        context: ./project_dev-tools_frontend
-        target: product
-        dockerfile: ./Dockerfile
-      command: npm start
-      port:
-        - 3000:80
+    command: npm start
+
