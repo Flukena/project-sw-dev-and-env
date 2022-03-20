@@ -1,12 +1,21 @@
-FROM node:16.13.2-alpine 
+FROM node:16.14-alpine
 
-WORKDIR /app
+WORKDIR /usr/app
 
 COPY package.json ./
+
+COPY package-lock.json ./
+
+# for production image optimization
+
+
 RUN npm install
-COPY . .
+
+COPY ./ ./
+
+RUN npm run build
 
 
+# EXPOSE 3000
 
-EXPOSE 5000
 CMD ["npm", "start"]

@@ -1,5 +1,9 @@
-const taskRouteTest = require('../project_dev-tools_server/api/routes/taskRoutes')
+const app = require('./app')
 
-test("Must work correctly", () => {
-    expect(taskRouteTest)
+
+it('should get A', () => {
+  const result = getScore()
+
+  // Assertion
+  expect(result).toEqual('A')
 })

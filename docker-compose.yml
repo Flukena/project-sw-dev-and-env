@@ -1,18 +1,37 @@
-version: '3.8'
+version: '3.7'
 
 services:
-  # backend: 
-  #   build:
-  #     context: ./project_dev-tools_server
-  #     target: back
-  #     dockerfile: ./Dockerfile
-
-  #   command: npm run serve
-
-  frontend:
-    build:
-      context: ../project_dev-tools_frontend/dist
-      target: front
-      dockerfile: ./Dockerfile
-    command: npm start
-
+  app:
+    container_name: frontend
+    restart: always
+    build: ./project_dev-tools_frontend
+    ports: ['8080:8080']
+  back:
+    # depends_on:
+    #   - mongodb
+    container_name: backend
+    restart: always
+    build: ./project_dev-tools_server
+    ports: ['3000:3000']
+  
+    # environment:
+    #   - DB_HOST=mongodb
+    #   - DB_USER=admin
+    #   - DB_PASSWORD=admin
+    #   - DB_NAME=traderrecord
+    #   - DB_PORT=27017
+    # stdin_open: true
+    # tty: true
+#   mongodb:
+#     image: mongo:5.0.2
+#     restart: unless-stopped
+    
+#     environment:
+#       - MONGO_INITDB_ROOT_USERNAME=admin
+#       - MONGO_INITDB_ROOT_PASSWORD=admin
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - db:/data/db
+# volumes:
+#   db:
