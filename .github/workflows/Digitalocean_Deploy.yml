@@ -2,7 +2,7 @@ name: DIGITALOCEAN_DEPLOY
 
 on:
   push:
-    branches: [ main]
+    branches: [ main ]
   
 jobs:
   Build:
@@ -13,6 +13,6 @@ jobs:
       - name: Create .env
         run: echo 'PORT=${{ secrets.PORT }}' > .env
       
-      - name: Run build
-        run: docker-compose up -d
+      # - name: Run build
+      #   run: docker-compose up -d
         
