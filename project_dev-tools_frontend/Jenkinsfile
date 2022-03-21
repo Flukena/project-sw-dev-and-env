@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pull code') {
+            steps {
+                git branch: 'Non', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
+            }
+        }
+        stage('Download dependency') {
+            steps {
+                sh 'cd project_dev-tools_frontend && npm install'
+                sh 'cd project_dev-tools_server && npm install'
+            }
+        }
+        stage('Unit test') {
+            steps {
+                // sh 'cd project_dev-tools_frontend && npm run serve'
+                // sh 'cd project_dev-tools_server && npm run start'
+                echo 'Unit test'
+            }
+        }
+        stage('Component test') {
+            steps {
+                echo 'npx cypress run'
+                // sh 'cd project_dev-tools_frontend && c'
+            }
+        }
+        stage('E2E test') {
+            steps {
+                echo 'npm run e2e test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploy'
+            }
+        }
+    }
+}
