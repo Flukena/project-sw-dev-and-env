@@ -5,7 +5,7 @@ services:
     container_name: frontend
     restart: always
     build: ./project_dev-tools_frontend
-    ports: ['${PORT:-8000}:80']
+    ports: ['8080:8080']
   back:
     # depends_on:
     #   - mongodb
