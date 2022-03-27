@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Unit test') {
             steps {
-                echo 'npm run test'
+                sh 'npm run test'
             }
         }
         stage('Component test') {
