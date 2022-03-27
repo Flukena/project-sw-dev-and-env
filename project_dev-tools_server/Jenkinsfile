@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Unit test') {
             steps {
-                sh 'npm run test'
+                sh 'cd project_dev-tools_frontend && npm run test'
             }
         }
         stage('Component test') {
