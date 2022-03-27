@@ -1,0 +1,53 @@
+{
+  "name": "vuecrudapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.23.0",
+    "core-js": "^3.6.5",
+    "semantic-ui-css": "^2.4.1",
+    "vue": "^2.6.11",
+    "vue-flash-message": "^0.7.2",
+    "vue-router": "^3.5.2",
+    "vue-simple-alert": "^1.1.1",
+    "vue2-datepicker": "^3.10.4",
+    "vuetify": "^2.6.3"
+  },
+  "devDependencies": {
+    "@types/vue2-datepicker": "^3.3.1",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "deepmerge": "^4.2.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.32.13",
+    "sass-loader": "^12.4.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
