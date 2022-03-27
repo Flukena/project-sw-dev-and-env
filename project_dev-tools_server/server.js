@@ -10,6 +10,7 @@ const routes = require('./api/routes/taskRoutes');
 // mongoose.set('useFindAndModify', false);
 
 
+
 const username = "<mongodb username>";
 const password = "<password>";
 const cluster = "<cluster name>";
@@ -23,7 +24,7 @@ const dbname = "myFirstDatabase";
 //   DB_NAME,
 // } = process.env;
 // const url = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`
-const url = 'mongodb://traderrecord:172352@49.0.124.7:27900/?authSource=traderrecord&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false'
+const url = 'mongodb://traderrecord:172352@49.0.124.7:27900/traderrecord'
 
 mongoose.connect(
   url,
