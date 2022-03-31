@@ -17,9 +17,37 @@ pipeline {
                 sh 'cd project_dev-tools_server && npm run test'
             }
         }
+        stage('Test report Unit test') {
+            steps {
+                 publishHTML([
+                    allowMissing: false, 
+                    alwaysLinkToLastBuild: false, 
+                    keepAll: false, 
+                    reportDir: './project_dev-tools_server/test.test.js', 
+                    reportFiles: 'unit-test.html', 
+                    reportName: 'Unit test report', 
+                    reportTitles: ''
+                ])
+            }
+        }
+        stage('Coverage test report Unit test') {
+            steps {
+                echo 'Coverage test report'
+            }
+        }
         stage('Component test') {
             steps {
                 echo 'npm run component test'
+            }
+        }
+        stage('Test report Component test') {
+            steps {
+                echo 'Test report'
+            }
+        }
+        stage('Coverage test report Component test') {
+            steps {
+                echo 'Coverage test report'
             }
         }
         stage('E2E test') {
