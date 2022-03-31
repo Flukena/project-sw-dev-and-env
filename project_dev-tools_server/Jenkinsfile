@@ -23,7 +23,7 @@ pipeline {
                     allowMissing: false, 
                     alwaysLinkToLastBuild: false, 
                     keepAll: false, 
-                    reportDir: './project_dev-tools_server/test.test.js', 
+                    reportDir: './project_dev-tools_server', 
                     reportFiles: 'unit-test.html', 
                     reportName: 'Unit test report', 
                     reportTitles: ''
