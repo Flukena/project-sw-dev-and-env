@@ -11,7 +11,7 @@ pipeline {
             steps {
                 // sh 'cd project_dev-tools_frontend && npm install'
                 // sh 'cd project_dev-tools_server && npm install'
-                echo 'test 111'
+                echo 'test 111561561'
             }
         }
         stage('Unit test') {
