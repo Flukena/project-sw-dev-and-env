@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Pull code') {
             steps {
-                git branch: 'Non', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
+                git branch: 'main', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
             }
         }
         stage('Download dependency') {
@@ -15,15 +15,34 @@ pipeline {
         }
         stage('Unit test') {
             steps {
-                // sh 'cd project_dev-tools_frontend && npm run serve'
-                // sh 'cd project_dev-tools_server && npm run start'
-                echo 'Unit test'
+                sh 'cd project_dev-tools_frontend && npm run test:unit'
+                echo 'Kuy Fluke'
+            }
+        }
+        stage('Test report Unit test') {
+            steps {
+                echo 'Test report'
+            }
+        }
+        stage('Coverage test report Unit test') {
+            steps {
+                echo 'Coverage test report'
             }
         }
         stage('Component test') {
             steps {
-                echo 'npx cypress run'
-                // sh 'cd project_dev-tools_frontend && c'
+ 		        sh 'cd project_dev-tools_server && npm run start'
+                sh 'cd project_dev-tools_frontend && npm run start && npx cypress run'
+            }
+        }
+        stage('Test report Component test') {
+            steps {
+                echo 'Test report'
+            }
+        }
+        stage('Coverage test report Component test') {
+            steps {
+                echo 'Coverage test report'
             }
         }
         stage('E2E test') {
