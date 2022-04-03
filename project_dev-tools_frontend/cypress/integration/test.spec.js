@@ -1,6 +1,6 @@
 describe("Task Unit", () => {
     beforeEach(() => {
-        cy.visit("http://192.168.1.106:8080/tasks");
+        cy.visit("http://159.223.32.22:8080/tasks");
     });
     it("Load Successfully", () => {
         cy.contains("Show").should("exist");
@@ -31,7 +31,7 @@ describe("Task Unit", () => {
 
 describe("New Unit", () => {
     beforeEach(() => {
-        cy.visit("http://192.168.1.106:8080/tasks/new");
+        cy.visit("http://159.223.32.22:8080/tasks/new");
     });
     it("Load Successfully", () => {
         cy.contains("Submit").should("exist");
