@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Pull code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
+                git branch: 'Developer', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
             }
         }
         stage('Download dependency') {
