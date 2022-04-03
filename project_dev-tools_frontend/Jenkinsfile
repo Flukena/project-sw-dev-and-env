@@ -4,12 +4,11 @@ pipeline {
     stages {
         stage('Pull code') {
             steps {
-                git branch: 'Developer', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
+                git branch: 'Non', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
             }
         }
         stage('Download dependency') {
             steps {
-                sh 'cd project_dev-tools_server && npm install'
                 sh 'cd project_dev-tools_frontend && npm install'
             }
         }
