@@ -5,7 +5,7 @@
       <div class="ui label" style="width:">
         <i class="calendar icon"></i>Date 
       </div>
-      <date-picker v-model="task.task1" lang="en" type="date" format="YYYY-MM-dd"></date-picker>
+      <input type="date" v-model="task.task1" id="1">
       <!-- <date-picker v-model="task.time" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker> -->
       <!-- <input type="text" placeholder="Enter Date..." v-model="task.task1" /> -->
     </div>
@@ -14,28 +14,28 @@
       <div class="ui label">
    <i class="bitcoin icon"></i> Symbol
       </div>
-      <input type="text" placeholder="Enter Symbol" v-model="task.task2" />
+      <input type="text" placeholder="Enter Symbol" v-model="task.task2"  id="2"/>
     </div>
 
     <div class="ui labeled input fluid">
       <div class="ui label">
    <i class="arrow alternate circle left icon"></i> Entry
       </div>
-      <input type="text" placeholder="Enter Entry" v-model="task.task3" />
+      <input type="text" placeholder="Enter Entry" v-model="task.task3" id="3"/>
     </div>
 
     <div class="ui labeled input fluid">
       <div class="ui label">
    <i class="dollar sign icon"></i> Profit/Loss
       </div>
-      <input type="text" placeholder="Enter Profit/Loss" v-model="task.task4" />
+      <input type="text" placeholder="Enter Profit/Loss" v-model="task.task4" id="4"/>
     </div>
 
     <div class="ui labeled input fluid">
       <div class="ui label">
    <i class="book icon"></i> Note
       </div>
-      <input type="text" placeholder="Enter Note" v-model="task.task5" />
+      <input type="text" placeholder="Enter Note" v-model="task.task5" id="5"/>
     </div>
 
     <button class="positive ui button">Submit</button>
@@ -43,11 +43,11 @@
 </template>
 <script>
 import 'vue2-datepicker/index.css'; 
-import DatePicker from 'vue2-datepicker'
+
 export default {
   name: 'task-form',
   components:{
-    DatePicker
+   
   },
   props: {
     task: {

@@ -4,33 +4,36 @@ pipeline {
     stages {
         stage('Pull code') {
             steps {
-                git branch: 'Non', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
+                git branch: 'main', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
             }
         }
         stage('Download dependency') {
             steps {
-                sh 'cd project_dev-tools_frontend && npm install'
+                sh 'cd project_dev-tools_frontend'
+                sh 'cd tests'
+                sh 'cd unit'
+                sh 'npm run test:unit'
             }
         }
         stage('Unit test') {
             steps {
                 sh 'cd project_dev-tools_frontend && npm run test:unit'
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Coverage Unit Test Report'
-                ]
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Unit Test Report'
-                ]
+                // publishHTML target: [
+                //         allowMissing: false,
+                //         alwaysLinkToLastBuild: false,
+                //         keepAll: true,
+                //         reportDir: "./coverage/lcov-report",
+                //         reportFiles: "index.html",
+                //         reportName: 'Coverage Unit Test Report'
+                // ]
+                // publishHTML target: [
+                //         allowMissing: false,
+                //         alwaysLinkToLastBuild: false,
+                //         keepAll: true,
+                //         reportDir: "./coverage",
+                //         reportFiles: "report.html",
+                //         reportName: 'Unit Test Report'
+                // ]
             }
         }
         stage('Component test') {
