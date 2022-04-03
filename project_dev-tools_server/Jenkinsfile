@@ -33,19 +33,6 @@ pipeline {
                 ]
             }
         }
-        stage('Test report Unit test') {
-            steps {
-                 publishHTML([
-                    allowMissing: false, 
-                    alwaysLinkToLastBuild: false, 
-                    keepAll: false, 
-                    reportDir: './project_dev-tools_server', 
-                    reportFiles: 'unit-test.html', 
-                    reportName: 'Unit test report', 
-                    reportTitles: ''
-                ])
-            }
-        }
         stage('Component test') {
             steps {
                 echo 'npm run component test'
