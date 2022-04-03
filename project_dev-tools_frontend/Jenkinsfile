@@ -8,10 +8,8 @@ pipeline {
             }
         }
         stage('Download dependency') {
-            steps {
-                
+            steps {     
                 sh 'cd project_dev-tools_frontend && npm install'
-                sh 'cd project_dev-tools_server && npm install'
             }
         }
         stage('Unit test') {
