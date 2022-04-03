@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+  
+    "test:unit": "jest test/utils --coverage",
     "lint": "vue-cli-service lint",
     "start": "vue-cli-service serve",
     "cypress:open": "cypress open",
