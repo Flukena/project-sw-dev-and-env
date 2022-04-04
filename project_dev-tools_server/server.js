@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const {parse, stringify, toJSON, fromJSON} = require('flatted');
 // Body-parser is the Node.js body parsing middleware. 
 // It is responsible for parsing the incoming request bodies in a middleware before you handle it.
 const bodyParser = require('body-parser');

@@ -13,11 +13,16 @@ exports.list_all_tasks = (req, res) => {
   });
 };
 exports.create_a_task = (req, res) => {
+  try{
   const newTask = new task(req.body);
   newTask.save((err, task) => {
     if (err) res.send(err);
     res.json(task);
   });
+}catch(error){
+  res.status(404).json({error:'format is correct'})
+}
+
 };
 exports.read_a_task = (req, res) => {
   task.findById(req.params.taskId, (err, task) => {
@@ -26,6 +31,7 @@ exports.read_a_task = (req, res) => {
   });
 };
 exports.update_a_task = (req, res) => {
+  try{
   task.findOneAndUpdate(
     { _id: req.params.taskId },
     req.body,
@@ -35,8 +41,14 @@ exports.update_a_task = (req, res) => {
       res.json(task);
     }
   );
+}catch(error){
+  res.status(404).json({error:'format is correct'})
+}
 };
 exports.delete_a_task = (req, res) => {
+  console.log(req.body)
+  if(res.send(req))
+  try{
   task.deleteOne({ _id: req.params.taskId }, err => {
     if (err) res.send(err);
     res.json({
@@ -44,4 +56,7 @@ exports.delete_a_task = (req, res) => {
      _id: req.params.taskId
     });
   });
+}catch(error){
+  res.status(404).json({error:'not id'})
+}
 };
