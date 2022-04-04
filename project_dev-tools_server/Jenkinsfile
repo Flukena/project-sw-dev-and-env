@@ -15,7 +15,7 @@ pipeline {
         stage('Unit test') {
             steps {
                 dir('./project_dev-tools_server') {
-                    echo 'npm run test'
+                    sh 'npm run test'
 //                 publishHTML target: [
 //                         allowMissing: false,
 //                         alwaysLinkToLastBuild: false,
