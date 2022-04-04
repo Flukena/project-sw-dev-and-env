@@ -15,48 +15,48 @@ pipeline {
         stage('Unit test') {
             steps {
                 sh 'cd project_dev-tools_server && npm run test'
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Coverage Unit Test Report'
-                ]
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Unit Test Report'
-                ]
+//                 publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage/lcov-report",
+//                         reportFiles: "index.html",
+//                         reportName: 'Coverage Unit Test Report'
+//                 ]
+//                 publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage",
+//                         reportFiles: "report.html",
+//                         reportName: 'Unit Test Report'
+//                 ]
             }
         }
         stage('Component test') {
             steps {
                 echo 'npm run component test'
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Coverage Component Test Report'
-                ]
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Component Test Report'
-                ]
+//                 publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage/lcov-report",
+//                         reportFiles: "index.html",
+//                         reportName: 'Coverage Component Test Report'
+//                 ]
+//                 publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage",
+//                         reportFiles: "report.html",
+//                         reportName: 'Component Test Report'
+//                 ]
             }
         }
         stage("Code coverage report") {
             steps {
-                clover(cloverReportDir: 'project_dev-tools_frontend/coverage', cloverReportFileName: 'clover.xml',
+                clover(cloverReportDir: 'project_dev-tools_server/coverage', cloverReportFileName: 'clover.xml',
                     healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
                     unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
                     failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
