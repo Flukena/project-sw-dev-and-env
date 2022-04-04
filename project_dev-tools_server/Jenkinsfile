@@ -14,7 +14,8 @@ pipeline {
         }
         stage('Unit test') {
             steps {
-                sh 'cd project_dev-tools_server && npm run test'
+                dir('./project_dev-tools_server') {
+                    sh 'npm run test'
 //                 publishHTML target: [
 //                         allowMissing: false,
 //                         alwaysLinkToLastBuild: false,
@@ -31,6 +32,7 @@ pipeline {
 //                         reportFiles: "report.html",
 //                         reportName: 'Unit Test Report'
 //                 ]
+                }
             }
         }
         stage('Component test') {
