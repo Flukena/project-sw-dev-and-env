@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Download dependency') {
             steps {   
-                sh 'cd project_dev-tools_frontend && npm cache clean --force'
+                sh 'cd project_dev-tools_frontend && rm -rf node_modules/'
                 sh 'cd project_dev-tools_frontend && npm install'
             }
         }
