@@ -18,20 +18,20 @@ pipeline {
                 dir('./project_dev-tools_frontend') {
                     sh 'npm run test:unit'
                     
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "lcov.html",
-                        reportName: 'Unit Test Coverage Report'
-                    ]
+//                     publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage/lcov-report",
+//                         reportFiles: "lcov.html",
+//                         reportName: 'Unit Test Coverage Report'
+//                     ]
                     
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: "./coverage",
+                        reportDir: "./",
                         reportFiles: "report.html",
                         reportName: 'Unit Test Report'
                     ]
