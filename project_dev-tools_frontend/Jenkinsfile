@@ -8,34 +8,35 @@ pipeline {
             }
         }
         stage('Download dependency') {
-            steps {     
+            steps {   
+                sh 'cd project_dev-tools_frontend && rm -rf node_modules/'
                 sh 'cd project_dev-tools_frontend && npm install'
             }
         }
         stage('Unit test') {
             steps {
                 sh 'cd project_dev-tools_frontend && npm run test:unit'
-                // publishHTML target: [
-                //         allowMissing: false,
-                //         alwaysLinkToLastBuild: false,
-                //         keepAll: true,
-                //         reportDir: "./coverage/lcov-report",
-                //         reportFiles: "index.html",
-                //         reportName: 'Coverage Unit Test Report'
-                // ]
-                // publishHTML target: [
-                //         allowMissing: false,
-                //         alwaysLinkToLastBuild: false,
-                //         keepAll: true,
-                //         reportDir: "./coverage",
-                //         reportFiles: "report.html",
-                //         reportName: 'Unit Test Report'
-                // ]
+                publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Coverage Unit Test Report'
+                ]
+                publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Unit Test Report'
+                ]
             }
         }
         stage('Component test') {
             steps {
-                sh 'cd project_dev-tools_frontend && npm cypress:run'
+                sh 'cd project_dev-tools_frontend && npm run cypress:run'
                 publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
