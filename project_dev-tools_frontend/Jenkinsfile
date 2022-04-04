@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Pull code') {
+        stage('Pull Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Flukena/project-sw-dev-and-env.git'
+                checkout scm
             }
         }
         stage('Download dependency') {
