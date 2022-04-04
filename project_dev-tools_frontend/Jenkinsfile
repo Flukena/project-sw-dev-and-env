@@ -16,21 +16,21 @@ pipeline {
         stage('Unit test') {
             steps {
                 sh 'cd project_dev-tools_frontend && npm run test:unit'
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Unit Test Coverage Report'
-                    ]
+//                 publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage/lcov-report",
+//                         reportFiles: "index.html",
+//                         reportName: 'Unit Test Coverage Report'
+//                     ]
 
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: "./coverage",
-                        reportFiles: "report.html",
+                        reportDir: "coverage",
+                        reportFiles: "index.html",
                         reportName: 'Unit Test Report'
                     ]
             }
