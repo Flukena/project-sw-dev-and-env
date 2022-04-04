@@ -15,7 +15,7 @@ pipeline {
         stage('Unit test') {
             steps {
                 dir('./project_dev-tools_server') {
-                    sh 'npm run test'
+                    echo 'npm run test'
 //                 publishHTML target: [
 //                         allowMissing: false,
 //                         alwaysLinkToLastBuild: false,
@@ -37,14 +37,15 @@ pipeline {
         }
         stage('Component test') {
             steps {
-                echo 'npm run component test'
+                dir('./project_dev-tools_server') {
+                    echo 'npm run test'
 //                 publishHTML target: [
 //                         allowMissing: false,
 //                         alwaysLinkToLastBuild: false,
 //                         keepAll: true,
 //                         reportDir: "./coverage/lcov-report",
 //                         reportFiles: "index.html",
-//                         reportName: 'Coverage Component Test Report'
+//                         reportName: 'Coverage Unit Test Report'
 //                 ]
 //                 publishHTML target: [
 //                         allowMissing: false,
@@ -52,8 +53,9 @@ pipeline {
 //                         keepAll: true,
 //                         reportDir: "./coverage",
 //                         reportFiles: "report.html",
-//                         reportName: 'Component Test Report'
+//                         reportName: 'Unit Test Report'
 //                 ]
+                }
             }
         }
         stage("Code coverage report") {
