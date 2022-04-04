@@ -25,7 +25,19 @@ pipeline {
 //                         reportName: 'Unit Test Coverage Report'
 //                     ]
 
-                    publishHTML target: [
+//                     publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "coverage",
+//                         reportFiles: "index.html",
+//                         reportName: 'Unit Test Report'
+//                     ]
+            }
+        }
+        stage('Unit Test Report') {
+            steps {
+                publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
