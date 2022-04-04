@@ -17,12 +17,12 @@ pipeline {
                 dir('./project_dev-tools_server') {
                     sh 'npm run test'
                     publishHTML target: [
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: "./coverage/lcov-report",
-                            reportFiles: "index.html",
-                            reportName: 'Coverage Unit Test Report'
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "index.html",
+                        reportName: 'Unit Test Coverage Report'
                     ]
                 }
             }
