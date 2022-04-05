@@ -18,11 +18,7 @@ pipeline {
                 dir('./project_dev-tools_frontend') {
                     sh 'npm run test:unit'
                 }
-            }
-        }
-        stage('Unit test report'){
-            steps {
-                 publishHTML target: [
+                publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
