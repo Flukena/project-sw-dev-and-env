@@ -16,22 +16,20 @@ pipeline {
         stage('Unit test') {
             steps {
                 dir('./project_dev-tools_frontend') {
-                    sh 'npm run test:unit'
-                }
+                sh 'npm run test:unit'
                 publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: "./project_dev-tools_frontend/coverage/lcov-report",
+                        reportDir: "./coverage/lcov-report",
                         reportFiles: "index.html",
                         reportName: 'Unit Test Coverage Report'
-                    ]
-
+                ]
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: "./project_dev-tools_frontend/coverage",
+                        reportDir: "./coverage",
                         reportFiles: "report.html",
                         reportName: 'Unit Test Report'
                     ]
@@ -39,7 +37,8 @@ pipeline {
         }
         stage('Component test') {
             steps {
-                sh 'cd project_dev-tools_frontend && npm run cypress:run'
+                dir('./project_dev-tools_frontend')  {
+                sh 'npm run cypress:run'
                 publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
@@ -57,7 +56,7 @@ pipeline {
                         reportName: 'Component Test Report'
                 ]
             }
-            
+            }
         }
         stage("Code coverage report") {
             steps {
