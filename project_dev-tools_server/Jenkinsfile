@@ -21,6 +21,23 @@ pipeline {
             steps {
                 dir('./project_dev-tools_server') {
                     sh 'npm run test'
+
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Coverage Unit Test Report'
+                ]
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Unit Test Report'
+                ]
                 }
             }
         }
