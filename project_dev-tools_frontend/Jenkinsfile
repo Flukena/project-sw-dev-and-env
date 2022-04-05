@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Component test') {
             steps {
-                dir('./project_dev-tools_frontend') {
+                dir('./project_dev-tools_frontend')  {
                 sh 'npm run cypress:run'
                 publishHTML target: [
                         allowMissing: false,
