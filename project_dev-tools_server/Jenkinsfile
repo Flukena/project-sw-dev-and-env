@@ -28,7 +28,7 @@ pipeline {
         stage('Component test') {
             steps {
                 dir('./project_dev-tools_server') {
-                    echo 'npm run test'
+                    echo 'npm run test 12'
                 }
             }
         }
