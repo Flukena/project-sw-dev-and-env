@@ -17,7 +17,6 @@ pipeline {
             steps {
                 dir('./project_dev-tools_frontend') {
                     sh 'npm run test:unit'
-                }
                 publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
@@ -25,8 +24,7 @@ pipeline {
                         reportDir: "./project_dev-tools_frontend/coverage/lcov-report",
                         reportFiles: "index.html",
                         reportName: 'Unit Test Coverage Report'
-                    ]
-
+                ]
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,

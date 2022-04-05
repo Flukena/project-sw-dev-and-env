@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint",
     "start": "vue-cli-service serve",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --coverage"
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.8",
