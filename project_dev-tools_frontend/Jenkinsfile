@@ -18,23 +18,23 @@ pipeline {
                 dir('./project_dev-tools_frontend') {
                     sh 'npm run test:unit'
                     
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Unit Test Coverage Report'
-                    ]
+//                     publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage/lcov-report",
+//                         reportFiles: "index.html",
+//                         reportName: 'Unit Test Coverage Report'
+//                     ]
 
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Unit Test Report'
-                    ]
+//                     publishHTML target: [
+//                         allowMissing: false,
+//                         alwaysLinkToLastBuild: false,
+//                         keepAll: true,
+//                         reportDir: "./coverage",
+//                         reportFiles: "report.html",
+//                         reportName: 'Unit Test Report'
+//                     ]
                 }
             }
         }
@@ -61,7 +61,7 @@ pipeline {
         }
         stage("Code coverage report") {
             steps {
-                clover(cloverReportDir: 'project_dev-tools_frontend', cloverReportFileName: 'clover.xml',
+                clover(cloverReportDir: 'project_dev-tools_frontend/coverage', cloverReportFileName: 'clover.xml',
                     healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
                     unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
                     failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
