@@ -12,10 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create .env
         run: echo 'PORT=${{ secrets.PORT }}' > .env
-        
-      - name: Run Stop Container
-        run: docker kill $(docker ps -q)
-
+      
 
       - name: Run build      
         run: docker-compose -f "docker-compose.yml" up -d --build
