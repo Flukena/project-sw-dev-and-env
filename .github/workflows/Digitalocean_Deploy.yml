@@ -13,7 +13,8 @@ jobs:
       - name: Create .env
         run: echo 'PORT=${{ secrets.PORT }}' > .env
       
-
+      - name: stop Container
+        run: docker rm $(docker ps -a -q)
       - name: Run build      
         run: docker-compose -f "docker-compose.yml" up -d --build
         
