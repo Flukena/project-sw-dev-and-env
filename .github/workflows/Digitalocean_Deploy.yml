@@ -14,8 +14,9 @@ jobs:
         run: echo 'PORT=${{ secrets.PORT }}' > .env
         
       - name: Run Stop Container
-        run: run: docker kill $(docker ps -q)
-        
+        run: docker kill $(docker ps -q) && docker rmi $(docker images -q)
+
+
       - name: Run build      
         run: docker-compose -f "docker-compose.yml" up -d --build
         
