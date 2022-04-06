@@ -46,8 +46,6 @@ exports.update_a_task = (req, res) => {
 }
 };
 exports.delete_a_task = (req, res) => {
-  console.log(req.body)
-  if(res.send(req))
   try{
   task.deleteOne({ _id: req.params.taskId }, err => {
     if (err) res.send(err);
