@@ -70,7 +70,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploy project'
+                sh 'docker-compose build up -d app'
             }
         }
     }

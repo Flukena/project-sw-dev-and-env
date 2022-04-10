@@ -6,7 +6,7 @@ services:
     image: flukgoza/team-7-frontend:1.1
     restart: always
     build: ./project_dev-tools_frontend
-    ports: ['8080:8080']
+    ports: ['1150:1150']
   back:
     # depends_on:
     #   - mongodb
