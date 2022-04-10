@@ -70,7 +70,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                dir('./project_dev-tools_frontend') {
+                dir('./') {
                 sh 'docker-compose build up -d app'
             }
             }
