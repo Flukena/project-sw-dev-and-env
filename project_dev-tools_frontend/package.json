@@ -26,7 +26,8 @@
     "vue-router": "^3.5.2",
     "vue-simple-alert": "^1.1.1",
     "vue2-datepicker": "^3.10.4",
-    "vuetify": "^2.6.3"
+    "vuetify": "^2.6.3",
+    "webpack": "^5.72.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
