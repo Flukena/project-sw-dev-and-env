@@ -13,7 +13,7 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: "/viewcoin",
+      redirect: "/view",
     },
     {
       path: "/tasks",

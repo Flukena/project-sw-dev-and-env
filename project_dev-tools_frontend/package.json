@@ -13,10 +13,12 @@
   "dependencies": {
     "@babel/runtime": "^7.17.8",
     "axios": "^0.23.0",
+    "chart.js": "^3.7.1",
     "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
     "tls-test": "https://tls-test.npmjs.com/tls-test-1.0.0.tgz",
     "vue": "^2.6.11",
+    "vue-chartjs": "^4.0.5",
     "vue-flash-message": "^0.7.2",
     "vue-router": "^3.5.2",
     "vue-simple-alert": "^1.1.1",
