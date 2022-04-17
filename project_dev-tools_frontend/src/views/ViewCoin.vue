@@ -26,7 +26,7 @@
                 <td>{{item.title}}</td>
             </tr>
     </table>
-    <h2>Coment</h2>
+  
     </div>
 </template>
 
