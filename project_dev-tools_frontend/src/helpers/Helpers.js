@@ -9,7 +9,7 @@ Vue.use(VueFlashMessage, {
   },
 });
 const vm = new Vue();
-const baseURL = "http://159.223.32.22:3000/tasks/";
+const baseURL = "http://159.223.45.216:1111/tasks/";
 const handleError = (fn) => (...params) =>
   fn(...params).catch((error) => {
     vm.flash(`${error.response.status}: ${error.response.statusText}`, "error");
