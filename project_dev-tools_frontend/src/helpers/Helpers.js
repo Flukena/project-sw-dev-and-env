@@ -35,8 +35,8 @@ export const api = {
     const res = await axios.put(baseURL + payload._id, payload);
     return res.data;
   }),
-  // getcoin: handleError(async => {
-  //   const res = await axios.get('localhost:');
-  //   return res.data;
-  // }),
+  getcoin: handleError(async () => {
+    const res = await axios.get("http://159.223.45.216:1111/getcoin");
+    return res.data;
+  }),
 };

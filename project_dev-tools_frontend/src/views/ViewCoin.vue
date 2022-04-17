@@ -16,14 +16,14 @@
             </tr>
         </thead>
             <tr v-for="(item,i) in result" :key="i">
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.day}}</td>
+                <td>{{item.day7}}</td>
+                <td>{{item.mc}}</td>
+                <td>{{item.vol}}</td>
+                <td>{{item.cs}}</td>
+                <td>--</td>
             </tr>
     </table>
     </div>
@@ -41,13 +41,13 @@ name: 'viewcoin',
     };  
   },
   async mounted() {
-    this.resources = await api.getCoin();
+    this.resources = await api.getcoin();
   },
 computed: {
     result(){
       if(this.search){
       return this.resources.filter((item)=>{
-        return this.search.toLowerCase().split(' ').every(v => item.title.toLowerCase().includes(v))
+        return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
       })
       }else{
         return this.resources;
@@ -64,6 +64,6 @@ computed: {
 
 <style>
 table{
-    padding-right: 100pem;
+    margin-left: -30em;
 }
 </style>
