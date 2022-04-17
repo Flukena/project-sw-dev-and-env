@@ -63,7 +63,5 @@ computed: {
 </script>
 
 <style>
-table{
-    margin-left: -30em;
-}
+
 </style>
