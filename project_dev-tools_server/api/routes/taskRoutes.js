@@ -1,4 +1,5 @@
 const taskBuilder = require('../controllers/taskController');
+const coinBuilder = require('../controllers/CoinController')
 module.exports = app => {
   app
     .route('/tasks')
@@ -9,4 +10,7 @@ module.exports = app => {
     .get(taskBuilder.read_a_task)
     .put(taskBuilder.update_a_task)
     .delete(taskBuilder.delete_a_task);
+  app
+    .route('/getcoin')
+    .get(coinBuilder.getCoin)
 };

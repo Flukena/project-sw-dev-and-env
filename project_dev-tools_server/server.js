@@ -13,7 +13,7 @@ mongoose.connect(
   'mongodb://traderrecord:172352@49.0.124.7:27900/traderrecord',
   { useNewUrlParser: true }
 );
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 1111;
 const app = express();
 app.use(cors());
 // tells the system whether you want to use a simple algorithm for shallow parsing (i.e. false) 
