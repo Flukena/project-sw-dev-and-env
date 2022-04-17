@@ -16,6 +16,7 @@
     "bootstrap": "^5.1.3",
     "chart.js": "^3.7.1",
     "core-js": "^3.6.5",
+    "lightweight-charts": "^3.8.0",
     "moment": "^2.29.2",
     "semantic-ui-css": "^2.4.1",
     "tls-test": "https://tls-test.npmjs.com/tls-test-1.0.0.tgz",
