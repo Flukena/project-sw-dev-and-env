@@ -1,64 +1,30 @@
 <template>
-    <div>
+    <div class="all">
       <h1>View All Coins</h1>
       <input class="form-control" type="text" v-model="search" placeholder="Search" />             
-      <table class="ui celled compact table">
-      <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>24h %</th>
-            <th>7d %</th>
-            <th>Market Cap</th>
-            <th>Volume(24h)</th>
-            <th>Circulating Supply</th>
-            <th>Last 7 Days</th>
-        </tr>
-      </thead>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </table>
-    <!-- <table id="tasks" class="ui celled compact table">
-      <thead>
-        <tr>
-            <th>วัน/เดือน/ปี</th>
-            <th>ล่าสุด</th>
-            <th>ราคาเปิด</th>
-            <th>สูงสุด</th>
-            <th>ต่ำสุด</th>
-            <th>ปริมาณ</th>
-            <th>เปลี่ยน</th>
-        </tr>
-      </thead>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </table> -->
-    <table v-if="resources.length" class="ui celled compact table">
-                <thead>
-                    <tr>
-                        <th>Resource</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item,i) in resources" :key="i">
-                        <td><a v-bind:href="item.uri" target="_blank">{{item.title}}</a></td>
-                    </tr>
-                </tbody>
+      <table v-if="resources.length" class="ui celled compact table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>24h %</th>
+                <th>7d %</th>
+                <th>Market Cap</th>
+                <th>Volume(24h)</th>
+                <th>Circulating Supply</th>
+                <th>Last 7 Days</th>
+            </tr>
+        </thead>
+            <tr v-for="(item,i) in result" :key="i">
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.title}}</td>
+            </tr>
     </table>
     <h2>Coment</h2>
     </div>
@@ -82,7 +48,7 @@ name: 'viewcoin',
             {title:"Basic Skills",uri:"cccc.com",category:"c",icon:null},
             {title:"Board of Trustees",uri:"dddd.com",category:"d",icon:null}
         ]
-    };
+    };  
   },
 computed: {
     result(){
@@ -94,10 +60,17 @@ computed: {
         return this.resources;
       }
     }
-  }
+  },
+// mounted () {
+//     axios
+//       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+//       .then(response => (this.info = response))
+//   }
 }
 </script>
 
 <style>
-
+table{
+    padding-right: 100pem;
+}
 </style>
