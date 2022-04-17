@@ -26,7 +26,6 @@
                 <td>{{item.title}}</td>
             </tr>
     </table>
-  
     </div>
 </template>
 
