@@ -11,6 +11,6 @@ module.exports = app => {
     .put(taskBuilder.update_a_task)
     .delete(taskBuilder.delete_a_task);
   app
-    .route('/getCoin')
+    .route('/getcoin')
     .get(coinBuilder.getCoin)
 };
