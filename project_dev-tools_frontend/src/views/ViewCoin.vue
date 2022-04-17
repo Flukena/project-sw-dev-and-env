@@ -30,24 +30,18 @@
 </template>
 
 <script>
-// import { api } from '../helpers/Helpers';
+import { api } from '../helpers/Helpers';
 // import { createChart } from 'lightweight-charts';
 export default {
 name: 'viewcoin',
   data() {
     return {
       search:'',
-      resources:[
-            {title:"ABE Attendance",uri:"aaaa.com",category:"a",icon:null},
-            {title:"Accounting Services",uri:"aaaa.com",category:"a",icon:null},
-            {title:"Administration",uri:"aaaa.com",category:"a",icon:null},
-            {title:"Advanced Student Lookup",uri:"bbbb.com",category:"b",icon:null},
-            {title:"Art & Sciences",uri:"bbbb.com",category:"b",icon:null},
-            {title:"Auxiliares Services",uri:"bbbb.com",category:"b",icon:null},
-            {title:"Basic Skills",uri:"cccc.com",category:"c",icon:null},
-            {title:"Board of Trustees",uri:"dddd.com",category:"d",icon:null}
-        ]
+      resources:[]
     };  
+  },
+  async mounted() {
+    this.resources = await api.getCoin();
   },
 computed: {
     result(){
