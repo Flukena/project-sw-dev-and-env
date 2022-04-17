@@ -16,44 +16,38 @@
             </tr>
         </thead>
             <tr v-for="(item,i) in result" :key="i">
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.title}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.day}}</td>
+                <td>{{item.day7}}</td>
+                <td>{{item.mc}}</td>
+                <td>{{item.vol}}</td>
+                <td>{{item.cs}}</td>
+                <td>--</td>
             </tr>
     </table>
     </div>
 </template>
 
 <script>
-// import { api } from '../helpers/Helpers';
+import { api } from '../helpers/Helpers';
 // import { createChart } from 'lightweight-charts';
 export default {
 name: 'viewcoin',
   data() {
     return {
       search:'',
-      resources:[
-            {title:"ABE Attendance",uri:"aaaa.com",category:"a",icon:null},
-            {title:"Accounting Services",uri:"aaaa.com",category:"a",icon:null},
-            {title:"Administration",uri:"aaaa.com",category:"a",icon:null},
-            {title:"Advanced Student Lookup",uri:"bbbb.com",category:"b",icon:null},
-            {title:"Art & Sciences",uri:"bbbb.com",category:"b",icon:null},
-            {title:"Auxiliares Services",uri:"bbbb.com",category:"b",icon:null},
-            {title:"Basic Skills",uri:"cccc.com",category:"c",icon:null},
-            {title:"Board of Trustees",uri:"dddd.com",category:"d",icon:null}
-        ]
+      resources:[]
     };  
+  },
+  async mounted() {
+    this.resources = await api.getcoin();
   },
 computed: {
     result(){
       if(this.search){
       return this.resources.filter((item)=>{
-        return this.search.toLowerCase().split(' ').every(v => item.title.toLowerCase().includes(v))
+        return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
       })
       }else{
         return this.resources;
@@ -69,7 +63,5 @@ computed: {
 </script>
 
 <style>
-table{
-    padding-right: 100pem;
-}
+
 </style>
