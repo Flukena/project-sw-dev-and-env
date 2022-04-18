@@ -1,0 +1,101 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pull Code') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Download dependency') {
+            steps {   
+                sh 'cd project_dev-tools_frontend && rm -rf node_modules/'
+                sh 'cd project_dev-tools_frontend && npm install'
+            }
+        }
+        stage('Unit test') {
+            steps {
+                dir('./project_dev-tools_frontend') {
+                sh 'npm run test:unit'
+                publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Unit Test Coverage Report'
+                ]
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Unit Test Report'
+                    ]
+                }
+            }
+        }
+        stage('Component test') {
+            steps {
+                dir('./project_dev-tools_frontend')  {
+                    sh 'npm run cypress:run'
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Coverage Component Test Report'
+                    ]
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Component Test Report'
+                    ]
+                }
+            }
+        }
+        stage("Code coverage report") {
+            steps {
+                clover(cloverReportDir: './project_dev-tools_frontend/coverage', cloverReportFileName: 'clover.xml',
+                    healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
+                    unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
+                    failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
+                )
+            }
+        }
+        stage('Deployment') {
+            steps {
+                withCredentials([
+                    usernamePassword(credentialsId: 'username-password-ssh', passwordVariable: 'password', usernameVariable: 'user_name'), 
+                    string(credentialsId: 'frontend-host', variable: 'host_ip'), string(credentialsId: 'host_name', variable: 'host_name'), 
+                    usernamePassword(credentialsId: 'team-7-dockerhub', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
+                    script{
+                        def remote = [:]
+                        remote.name = host_name
+                        remote.host = host_ip
+                        remote.user = user_name
+                        remote.password = password
+                        remote.allowAnyHosts = true
+                        
+                        sshCommand remote: remote, command: "git clone https://github.com/peetnawapol/Flukena/project-sw-dev-and-env"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-build.yml build project_dev-tools_frontend"
+                        
+                        sshCommand remote: remote, command: "docker login -u $docker_username -p $docker_password"
+                        sshCommand remote: remote, command: "docker push flukgoza/team-7-frontend:1.1.1"
+                        sshCommand remote: remote, command: "docker image rmi -f flukgoza/team-7-frontend:1.1.1"
+                        
+                        sshCommand remote: remote, command: "docker pull flukgoza/team-7-frontend:1.1.1"
+                        sshCommand remote: remote, command: "docker logout"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy.yml up -d project_dev-tools_frontend"
+                        sshCommand remote: remote, command: "rm -r project-sw-dev-and-env"
+                    }
+                }
+            }
+        }
+    }
+}
