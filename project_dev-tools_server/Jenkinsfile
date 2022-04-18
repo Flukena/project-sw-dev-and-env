@@ -60,26 +60,7 @@ pipeline {
             }
     }
     stage("Deploy:") {
-            steps {
-                withCredentials([
-                    string(credentialsId: 'TEAM8_USERNAME', variable: 'TEAM8_USERNAME'), 
-                    string(credentialsId: 'TEAM8_FRONTEND_HOST', variable: 'TEAM8_FRONTEND_HOST'), 
-                    string(credentialsId: 'TEAM8_HOST_PASSWORD', variable: 'TEAM8_HOST_PASSWORD')])
-                {
-                    script{
-                        def remote = [:]
-                        remote.name = TEAM8_USERNAME
-                        remote.host = TEAM8_FRONTEND_HOST
-                        remote.user = TEAM8_USERNAME
-                        remote.password = TEAM8_HOST_PASSWORD
-                        remote.allowAnyHosts = true
-                        sshCommand remote: remote, command: "git clone -b main https://github.com/Flukena/project-sw-dev-and-env.git team-7-frontend"
-                        sshCommand remote: remote, command: "docker-compose -f team-7-frontend/docker-compose.yml build frontend"
-                        sshCommand remote: remote, command: "docker stack deploy --compose-file team-7-frontend/docker-compose-deploy-frontend.yml team-7-frontend"
-                        sshCommand remote: remote, command: "rm -r team-7-frontend"
-                    }
-                }
-            }
+
         }
     }
 }
