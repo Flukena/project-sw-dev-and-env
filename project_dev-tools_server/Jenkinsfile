@@ -60,20 +60,20 @@ pipeline {
             }
     }
     stage("Deploy:") {
-            steps {
-                echo 'automatic deploy main branch to heroku and docker'
-                withCredentials([string(credentialsId: 'T12_ROOTPASS_SECRET', variable: 'rootpass')]) {
-                    script {
-                        def remote = [:]
-                        remote.name = 'T12'
-                        remote.host = '159.223.45.216'
-                        remote.user = 'root'
-                        remote.password = "${rootpass}"
-                        remote.allowAnyHosts = true
-                        sshCommand remote: remote, command: 'git clone https://github.com/Flukena/project-sw-dev-and-env.git'
-                        sshCommand remote: remote, command: 'docker-compose -f project-sw-dev-and-env/project_dev-tools_server/docker-compose-deploy-backend.yml up -d'
-                    }
+        steps {
+            echo 'automatic deploy main branch to heroku and docker'
+            withCredentials([string(credentialsId: 'T12_ROOTPASS_SECRET', variable: 'rootpass')]) {
+                script {
+                    def remote = [:]
+                    remote.name = 'T12'
+                    remote.host = '159.223.45.216'
+                    remote.user = 'root'
+                    remote.password = "${rootpass}"
+                    remote.allowAnyHosts = true
+                    sshCommand remote: remote, command: 'git clone https://github.com/Flukena/project-sw-dev-and-env.git'
+                    sshCommand remote: remote, command: 'docker-compose -f project-sw-dev-and-env/project_dev-tools_server/docker-compose-deploy-backend.yml up -d'
                 }
             }
         }
+    }
 }
