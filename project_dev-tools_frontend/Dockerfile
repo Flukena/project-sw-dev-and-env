@@ -16,6 +16,6 @@ COPY ./ ./
 RUN npm run build
 
 
-EXPOSE 8080
+EXPOSE 8660
 
 CMD ["npm", "start"]
