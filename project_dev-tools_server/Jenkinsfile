@@ -72,6 +72,8 @@ pipeline {
                         remote.allowAnyHosts = true
                         sshCommand remote: remote, command: 'git clone https://github.com/Flukena/project-sw-dev-and-env.git'
                         sshCommand remote: remote, command: 'docker-compose -f project-sw-dev-and-env/docker-compose-deploy-backend.yml up -d'
+                        sshCommand remote: remote, command: 'rm -r ./project-sw-dev-and-env'
+                        
                     }
                 }
             }
