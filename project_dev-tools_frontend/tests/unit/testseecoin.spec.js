@@ -1,6 +1,6 @@
 describe("Task Unit", () => {
     beforeEach(() => {
-        cy.visit("http://159.65.12.177:8660/tasks");
+        cy.visit("http://159.223.32.22:8080/tasks");
     });
     it("Load Successfully", () => {
         cy.contains("Show").should("exist");
@@ -31,7 +31,7 @@ describe("Task Unit", () => {
 
 describe("New Unit", () => {
     beforeEach(() => {
-        cy.visit("http://159.65.12.177:8660/tasks/new");
+        cy.visit("http://159.223.32.22:8080/tasks/new");
     });
     it("Load Successfully", () => {
         cy.contains("Submit").should("exist");
@@ -44,15 +44,5 @@ describe("New Unit", () => {
         cy.get('input[id="5"]').type("test5");
         cy.contains("Submit").click();
     });
-});
-describe("Task View", () => {
-    beforeEach(() => {
-        cy.visit("159.65.12.177:8660/view");
-    });
-    it("Load Successfully", () => {
-        
-    });
-    
-
 });
 

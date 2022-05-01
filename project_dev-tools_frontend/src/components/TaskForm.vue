@@ -21,7 +21,7 @@
       <div class="ui label">
    <i class="arrow alternate circle left icon"></i> Entry
       </div>
-      <input type="text" placeholder="Enter Entry" v-model="task.task3" id="3"/>
+      <input type="number" placeholder="Enter Entry" v-model="task.task3" id="3"/>
     </div>
 
     <div class="ui labeled input fluid">
