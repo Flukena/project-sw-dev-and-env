@@ -68,9 +68,27 @@ pipeline {
                 )
             }
         }
-        stage('Deploy') {
+        stage('Deployment') {
             steps {
-                sh 'docker-compose build up -d app'
+                withCredentials([
+                    usernamePassword(credentialsId: 'username-password-ssh', passwordVariable: 'password', usernameVariable: 'user_name'), 
+                    string(credentialsId: 'frontend-host', variable: 'host_ip'), string(credentialsId: 'host_name', variable: 'host_name'), 
+                    usernamePassword(credentialsId: 'team-7-dockerhub', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
+                    script{
+                        def remote = [:]
+                        remote.name = host_name
+                        remote.host = host_ip
+                        remote.user = user_name
+                        remote.password = password
+                        remote.allowAnyHosts = true
+                        
+                        sshCommand remote: remote, command: "git clone https://github.com/peetnawapol/Flukena/project-sw-dev-and-env"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy-frontend.yml down"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose.yml build --no-cache app"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy-frontend.yml up -d"
+                        sshCommand remote: remote, command: "rm -r project-sw-dev-and-env"
+                    }
+                }
             }
         }
     }
