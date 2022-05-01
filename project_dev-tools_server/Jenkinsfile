@@ -61,19 +61,20 @@ pipeline {
         }
         stage("Deploy:") {
             steps {
-                echo 'automatic deploy main branch to heroku and docker'
-                withCredentials([string(credentialsId: 'T12_ROOTPASS_SECRET', variable: 'rootpass')]) {
-                    script {
+                withCredentials([string(credentialsId: 'T01_HOST_NAME', variable: 'NAME'), string(credentialsId: 'T01_FRONTEND_HOST', variable: 'HOST'), usernamePassword(credentialsId: 'T01_HOST_ACCOUNT', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
+                    script{
                         def remote = [:]
-                        remote.name = 'T12'
-                        remote.host = '159.223.45.216'
-                        remote.user = 'root'
-                        remote.password = "${rootpass}"
+                        remote.name = NAME
+                        remote.host = HOST
+                        remote.user = USER
+                        remote.password = PASSWORD
                         remote.allowAnyHosts = true
-                        sshCommand remote: remote, command: 'git clone https://github.com/Flukena/project-sw-dev-and-env.git'
-                        sshCommand remote: remote, command: 'docker-compose -f project-sw-dev-and-env/docker-compose-deploy-backend.yml up -d'
-                        sshCommand remote: remote, command: 'rm -r ./project-sw-dev-and-env'
                         
+                        sshCommand remote: remote, command: "git clone -b main https://github.com/Flukena/project-sw-dev-and-env.git"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy-backend.yml down"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose.yml build --no-cache back"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy-backend.yml up -d"
+                        sshCommand remote: remote, command: "rm -r project-sw-dev-and-env"
                     }
                 }
             }
