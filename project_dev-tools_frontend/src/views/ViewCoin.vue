@@ -17,22 +17,12 @@
         </thead>
             <tr v-for="(item,i) in result" :key="i">
                 <td>{{item.name}}</td>
-<<<<<<< HEAD
                 <td>${{item.price.toFixed(2)}}</td>
                 <td>{{item.day.toFixed(2)}}%</td>
                 <td>{{item.day7.toFixed(2)}}%</td>
                 <td>{{item.mc.toFixed(2)}}</td>
                 <td>{{item.vol.toFixed(2)}}</td>
                 <td>{{item.cs.toFixed(2)}}</td>
-=======
-                <td>{{item.price}}</td>
-                <td>{{item.day}}</td>
-                <td>{{item.day7}}</td>
-                <td>{{item.mc}}</td>
-                <td>{{item.vol}}</td>
-                <td>{{item.cs}}</td>
-                <td>--</td>
->>>>>>> parent of 1055c53c6 (update deploy)
             </tr>
     </table>
     </div>
