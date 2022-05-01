@@ -6,12 +6,12 @@
 ```
 cd project_dev-tools_frontend
 npm install
-npm start   
+npm run start   
 ```
 
 * backend
 ```
 cd project_dev-tools_server
 npm install
-npm start   
+npm run serve  
 ```
