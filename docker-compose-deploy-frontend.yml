@@ -2,6 +2,6 @@ version: '3.7'
 
 services:
   frontend:
-    image: flukgoza/team-7-frontend:1.2.0
+    image: flukgoza/team-7-frontend:1.1.1
     ports:
       - "8660:8660"

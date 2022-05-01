@@ -83,9 +83,15 @@ pipeline {
                         remote.allowAnyHosts = true
                         
                         sshCommand remote: remote, command: "git clone https://github.com/peetnawapol/Flukena/project-sw-dev-and-env"
-                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy-frontend.yml down"
-                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose.yml build --no-cache app"
-                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy-frontend.yml up -d"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-build.yml build project_dev-tools_frontend"
+                        
+                        sshCommand remote: remote, command: "docker login -u $docker_username -p $docker_password"
+                        sshCommand remote: remote, command: "docker push flukgoza/team-7-frontend:1.1.1"
+                        sshCommand remote: remote, command: "docker image rmi -f flukgoza/team-7-frontend:1.1.1"
+                        
+                        sshCommand remote: remote, command: "docker pull flukgoza/team-7-frontend:1.1.1"
+                        sshCommand remote: remote, command: "docker logout"
+                        sshCommand remote: remote, command: "docker-compose -f project-sw-dev-and-env/docker-compose-deploy.yml up -d project_dev-tools_frontend"
                         sshCommand remote: remote, command: "rm -r project-sw-dev-and-env"
                     }
                 }
