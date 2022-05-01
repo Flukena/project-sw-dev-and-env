@@ -70,16 +70,13 @@ pipeline {
         }
         stage('Deployment') {
             steps {
-                withCredentials([
-                    usernamePassword(credentialsId: 'username-password-ssh', passwordVariable: 'password', usernameVariable: 'user_name'), 
-                    string(credentialsId: 'frontend-host', variable: 'host_ip'), string(credentialsId: 'host_name', variable: 'host_name'), 
-                    usernamePassword(credentialsId: 'team-7-dockerhub', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
+                withCredentials([string(credentialsId: 'T01_HOST_NAME', variable: 'NAME'), string(credentialsId: 'T01_FRONTEND_HOST', variable: 'HOST'), usernamePassword(credentialsId: 'T01_HOST_ACCOUNT', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
                     script{
                         def remote = [:]
-                        remote.name = host_name
-                        remote.host = host_ip
-                        remote.user = user_name
-                        remote.password = password
+                        remote.name = NAME
+                        remote.host = HOST
+                        remote.user = USER
+                        remote.password = PASSWORD
                         remote.allowAnyHosts = true
                         
                         sshCommand remote: remote, command: "git clone -b main https://github.com/Flukena/project-sw-dev-and-env.git"
@@ -93,3 +90,5 @@ pipeline {
         }
     }
 }
+
+
