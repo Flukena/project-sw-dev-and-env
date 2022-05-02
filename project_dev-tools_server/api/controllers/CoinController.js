@@ -38,7 +38,7 @@ let result = await new Promise(async (resolve, reject) => {
 
 
 result.data.forEach(coin => {
-    // console.log(coin)
+    // console.log(coin)  
     var name = coin.name
     var price = coin.quote.USD.price
     var day = coin.quote.USD.percent_change_24h
