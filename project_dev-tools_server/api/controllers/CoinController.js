@@ -18,7 +18,7 @@ let response = null;
 let list_coin = []
 let result = await new Promise(async (resolve, reject) => {
   try {
-    response = await axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=100', {
+    response = await axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=30', {
       headers: {
         'X-CMC_PRO_API_KEY': process.env.API_KEY,
       },
