@@ -12,7 +12,6 @@
                 <th>Market Cap</th>
                 <th>Volume(24h)</th>
                 <th>Circulating Supply</th>
-                <th>Last 7 Days</th>
             </tr>
         </thead>
             <tr v-for="(item,i) in result" :key="i">
